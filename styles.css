@@ -1,0 +1,475 @@
+/* Homework 5 - Flexbox and Grid Portfolio */
+
+/* Basic page setup */
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-padding-top: 190px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eeeeee;
+    color: #222222;
+}
+
+/* Step 4: Fixed Header using Flexbox */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 150px;
+    z-index: 1000;
+    background: #222222;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 12px 20px 8px;
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.header-content p {
+    margin: 5px 0 0;
+    font-size: 17px;
+}
+
+/* Step 1: Flexbox Navigation Bar */
+.nav-bar {
+    display: flex;
+    width: 100%;
+    min-height: 55px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Every navigation item grows equally */
+.nav-bar a {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    padding: 17px 8px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 55px;
+}
+
+.nav-bar a:hover {
+    background: #555555;
+}
+
+/* Step 2: Flexbox Main Container */
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 175px 25px 95px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.content-section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    scroll-margin-top: 180px;
+}
+
+.content-section h2 {
+    margin-top: 0;
+    font-size: 28px;
+}
+
+/* Step 3: CSS Grid for Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: minmax(55px, auto);
+    gap: 15px;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 55px;
+    padding: 15px;
+    background: #e1e1e1;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* This skill spans two columns */
+.skill-large {
+    grid-column: span 2;
+}
+
+/* Step 3: CSS Grid for Projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Project cards can grow and shrink with the grid */
+.project {
+    min-width: 0;
+    padding: 18px;
+    background: #fafafa;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-large {
+    grid-column: span 2;
+}
+
+.project img {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.project h3 {
+    margin: 0 0 10px;
+}
+
+.project p {
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Tables */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #bbbbbb;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #dddddd;
+}
+
+/* Links */
+a {
+    color: #333333;
+}
+
+.content-section a {
+    font-weight: bold;
+}
+
+.resume-link {
+    display: inline-block;
+    padding: 12px 18px;
+    background: #333333;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.resume-link:hover {
+    background: #555555;
+}
+
+/* Step 4: Fixed Footer using Flexbox */
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 60px;
+    padding: 12px 20px;
+    background: #222222;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 1000;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+    .site-header {
+        min-height: 190px;
+    }
+
+    .nav-bar {
+        flex-wrap: wrap;
+    }
+
+    .nav-bar a {
+        flex: 1 1 25%;
+        min-height: 45px;
+        padding: 12px 5px;
+    }
+
+    .main-container {
+        padding-top: 215px;
+    }
+
+    .project-large {
+        grid-column: span 1;
+    }
+
+    .skill-large {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        scroll-padding-top: 260px;
+    }
+
+    .site-header {
+        min-height: 230px;
+    }
+
+    .header-content h1 {
+        font-size: 25px;
+    }
+
+    .nav-bar a {
+        flex: 1 1 33.33%;
+        font-size: 14px;
+        min-height: 42px;
+    }
+
+    .main-container {
+        padding: 250px 15px 85px;
+        gap: 18px;
+    }
+
+    .content-section {
+        padding: 18px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-footer {
+        min-height: 50px;
+        font-size: 13px;
+    }
+}
+
+/* Homework 7 JavaScript feature styling */
+.greeting-panel {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: #f1f1f1;
+    border-left: 5px solid #333333;
+    border-radius: 8px;
+}
+
+.greeting-panel p {
+    margin: 0;
+}
+
+.time-greeting {
+    margin-bottom: 6px !important;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.ongoing-project {
+    border: 2px solid #777777;
+}
+
+.project-status {
+    align-self: flex-start;
+    margin-bottom: 12px;
+    padding: 5px 10px;
+    background: #e1e1e1;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.resume-status {
+    margin-top: 12px;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+    .project-large,
+    .skill-large {
+        grid-column: span 1;
+    }
+}
+
+
+/* Homework 8: interactive form, generated project cards, and bonus controls */
+.skill-form {
+    margin-top: 22px;
+    max-width: 520px;
+}
+
+.small-message {
+    margin-top: 8px;
+    min-height: 1.2em;
+}
+
+.project-status {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #e1e1e1;
+    color: #222;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.bonus-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 18px;
+}
+
+.bonus-controls > div {
+    min-width: 150px;
+}
+
+.bonus-controls .form-control-color {
+    width: 100%;
+    min-height: 38px;
+}
+
+.data-table {
+    margin-bottom: 0;
+}
+
+body {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.dark-theme {
+    background: #171717;
+    color: #eeeeee;
+}
+
+body.dark-theme .content-section {
+    background: #282828;
+    color: #eeeeee;
+}
+
+body.dark-theme .project {
+    background: #333333;
+    border-color: #555555;
+}
+
+body.dark-theme .skill {
+    background: #444444;
+    color: #ffffff;
+}
+
+body.dark-theme .greeting-panel {
+    background: #363636;
+    border-left-color: #bbbbbb;
+}
+
+body.dark-theme .project-status {
+    background: #555555;
+    color: #ffffff;
+}
+
+body.dark-theme th {
+    background: #444444;
+    color: #ffffff;
+}
+
+body.dark-theme td {
+    color: #eeeeee;
+    border-color: #555555;
+}
+
+body.dark-theme .table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-bg-type: #303030;
+    color: #eeeeee;
+}
+
+body.dark-theme a {
+    color: #9ecbff;
+}
+
+body.dark-theme .resume-link,
+body.dark-theme .btn-dark {
+    background: #eeeeee;
+    color: #222222;
+    border-color: #eeeeee;
+}
+
+body.dark-theme .form-control,
+body.dark-theme .form-select {
+    background-color: #333333;
+    color: #eeeeee;
+    border-color: #666666;
+}
+
+@media (max-width: 600px) {
+    .bonus-controls {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .bonus-controls > div {
+        width: 100%;
+    }
+}
